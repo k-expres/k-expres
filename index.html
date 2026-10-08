@@ -12,13 +12,19 @@ HTML
             padding: 0;
             box-sizing: border-box;
             font-family: Georgia, 'Times New Roman', Times, serif;
-            scroll-behavior: smooth;
         }
 
         body {
             background-color: #0d0d0d;
             color: #ffffff;
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Ak nie je vybraná sekcia, zakážeme scrollovanie */
+        body.no-scroll {
+            overflow: hidden;
+            height: 100vh;
         }
 
         /* Celostránkové pozadie s kamiónom */
@@ -47,12 +53,13 @@ HTML
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Presné logo Kexpres podľa obrázka */
+        /* Presné logo Kexpres */
         .logo {
             display: flex;
             align-items: center;
             text-decoration: none;
             gap: 6px;
+            cursor: pointer;
         }
 
         .logo-bars {
@@ -64,7 +71,7 @@ HTML
         .logo-bar {
             width: 7px;
             height: 28px;
-            background-color: #00bfff; /* Jasná svetlomodrá */
+            background-color: #00bfff;
             transform: skewX(-20deg);
         }
 
@@ -90,6 +97,7 @@ HTML
             font-size: 15px;
             font-family: Arial, sans-serif;
             transition: color 0.3s ease;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -114,11 +122,17 @@ HTML
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
         }
 
-        /* Sekcie */
-        section {
-            padding: 80px 40px;
+        /* Skryté sekcie - zobrazená bude vždy len vybraná sekcia */
+        section.tab-content {
+            display: none;
+            padding: 120px 40px 80px 40px;
             max-width: 1100px;
             margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        section.tab-content.active {
+            display: block;
         }
 
         .section-title {
@@ -213,20 +227,20 @@ HTML
                 grid-template-columns: 1fr;
             }
 
-            section {
-                padding: 60px 20px;
+            section.tab-content {
+                padding: 140px 20px 60px 20px;
             }
         }
     </style>
 </head>
-<body>
+<body class="no-scroll">
 
     <!-- Celostránkové pozadie -->
     <div class="page-bg"></div>
 
     <!-- Horná lišta -->
     <header>
-        <a href="#domov" class="logo">
+        <a onclick="showTab('domov')" class="logo">
             <div class="logo-bars">
                 <div class="logo-bar"></div>
                 <div class="logo-bar"></div>
@@ -235,20 +249,20 @@ HTML
             <div class="logo-text">Kexpres</div>
         </a>
         <nav>
-            <a href="#domov">Domovská stránka</a>
-            <a href="#sluzby">Služby</a>
-            <a href="#kontakt">Kontakt</a>
+            <a onclick="showTab('domov')">Domovská stránka</a>
+            <a onclick="showTab('sluzby')">Služby</a>
+            <a onclick="showTab('kontakt')">Kontakt</a>
             <a href="prepravny-poriadok.pdf" target="_blank">Prepravný poriadok</a>
         </nav>
     </header>
 
-    <!-- Domovská stránka -->
-    <section id="domov" class="hero">
+    <!-- Úvodná úvodná obrazovka (zobrazí sa pri načítaní) -->
+    <div id="domov" class="hero">
         <h1>transport • logistic • spedition</h1>
-    </section>
+    </div>
 
-    <!-- Služby -->
-    <section id="sluzby">
+    <!-- Služby (skryté, kým sa neklikne) -->
+    <section id="sluzby" class="tab-content">
         <h2 class="section-title">Naše služby</h2>
         <div class="services-content">
             <h3>Profesionálna vnútroštátna aj medzinárodná nákladná doprava na mieru</h3>
@@ -262,8 +276,8 @@ HTML
         </div>
     </section>
 
-    <!-- Kontakt -->
-    <section id="kontakt">
+    <!-- Kontakt (skrytý, kým sa neklikne) -->
+    <section id="kontakt" class="tab-content">
         <h2 class="section-title">Kontakt</h2>
         <div class="contact-grid">
             <div>
@@ -290,6 +304,30 @@ HTML
             </div>
         </div>
     </section>
+
+    <script>
+        function showTab(tabId) {
+            const hero = document.getElementById('domov');
+            const tabs = document.querySelectorAll('.tab-content');
+            
+            // Skryjeme všetky záložky
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            if (tabId === 'domov') {
+                hero.style.display = 'flex';
+                document.body.classList.add('no-scroll');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                hero.style.display = 'none';
+                document.body.classList.remove('no-scroll');
+                const targetTab = document.getElementById(tabId);
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            }
+        }
+    </script>
 
 </body>
 </html>
