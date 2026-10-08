@@ -1,3 +1,26 @@
+Ospravedlňujem sa, teraz je to z obrázkov úplne jasné!
+
+Na základe vašich snímok obrazovky som pripravil presný kód, ktorý obnovuje pôvodný dizajn:
+
+Logo: Bielo-modré logo s pásikmi a nápisom Kexpres.
+
+Menu: Tmavá horná lišta s položkami Domovská stránka, Služby, Kontakt a Prepravný poriadok (bielo-sivé písmo bez oranžových tlačidiel).
+
+Pozadie: Celá stránka má presne vašu fotku oranžového kamióna (kamion.jpg) presvitajúcu na pozadí s tmavým prekrytím.
+
+Písmo: Elegantné patkové písmo (serif / Georgia) presne podľa snímok.
+
+Obsah sekcií:
+
+Domov: Iba čistý text transport • logistic • spedition cez kamión.
+
+Naše služby: Presné texty o nákladnej doprave (plachtové návesy, platá, sólo, dodávky, do 25 ton) aj o bezpečnej preprave koní.
+
+Kontakt: S ikonkami, telefónnym číslom (+421 918 495 665), e-mailom (kuciakmichal@gmail.com), adresou v Martine a komplet IČO, DIČ, IČ DPH.
+
+Kód pre index.html:
+Otvorte na GitHube súbor index.html, stlačte ceruzku (Edit), vymažte celý obsah a vložte tento kód:
+
 HTML
 <!DOCTYPE html>
 <html lang="sk">
@@ -11,17 +34,29 @@ HTML
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Georgia, 'Times New Roman', Times, serif;
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: #111111;
+            background-color: #0d0d0d;
             color: #ffffff;
             line-height: 1.6;
         }
 
-        /* Navigácia / Horná lišta */
+        /* Celostránkové pozadie s kamiónom */
+        .page-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), 
+                        url('kamion.jpg') center/cover no-repeat fixed;
+            z-index: -1;
+        }
+
+        /* Horná lišta / Navigácia */
         header {
             position: fixed;
             top: 0;
@@ -29,64 +64,63 @@ HTML
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Modro-biele logo Kexpres */
         .logo {
-            color: #ffffff;
-            font-size: 26px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
         }
 
-        .logo span {
-            color: #ff6b00;
+        .logo-bars {
+            display: flex;
+            gap: 3px;
+            margin-right: 4px;
+        }
+
+        .logo-bar {
+            width: 4px;
+            height: 22px;
+            background-color: #0099ff;
+            transform: skewX(-15deg);
+        }
+
+        .logo-text {
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: bold;
+            font-style: italic;
+            font-family: Arial, sans-serif;
+            letter-spacing: -0.5px;
         }
 
         nav {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         nav a {
-            color: #ffffff;
+            color: #d1d1d1;
             text-decoration: none;
             font-size: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-family: Arial, sans-serif;
             transition: color 0.3s ease;
         }
 
         nav a:hover {
-            color: #ff6b00;
-        }
-
-        /* Tlačidlo Prepravný poriadok v menu */
-        nav a.btn-pdf {
-            padding: 8px 16px;
-            border: 2px solid #ff6b00;
-            border-radius: 5px;
-            background: rgba(255, 107, 0, 0.15);
             color: #ffffff;
         }
 
-        nav a.btn-pdf:hover {
-            background: #ff6b00;
-            color: #ffffff;
-        }
-
-        /* Úvodná sekcia (Hero) - IBA OBRÁZOK A NADPIS */
+        /* Úvodná sekcia */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), 
-                        url('kamion.jpg') center/cover no-repeat;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -96,91 +130,87 @@ HTML
 
         .hero h1 {
             color: #ffffff;
-            font-size: 42px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+            font-size: 46px;
+            font-weight: normal;
+            letter-spacing: 1px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
         }
 
-        /* Všeobecný štýl pre sekcie nižšie */
+        /* Sekcie */
         section {
-            padding: 100px 50px;
-            max-width: 1200px;
+            padding: 80px 40px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .section-title {
-            font-size: 32px;
-            text-transform: uppercase;
-            color: #ff6b00;
+            font-size: 42px;
+            font-weight: normal;
+            color: #ffffff;
             margin-bottom: 30px;
             text-align: center;
-            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 15px;
         }
 
-        /* Služby */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .service-card {
-            background: #1a1a1a;
-            padding: 30px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #ff6b00;
-        }
-
-        .service-card h3 {
+        /* Text Služieb */
+        .services-content h3 {
             font-size: 20px;
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
             color: #ffffff;
-            margin-bottom: 15px;
         }
 
-        .service-card p {
-            color: #aaaaaa;
-            font-size: 15px;
+        .services-content p {
+            font-size: 17px;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            text-align: justify;
         }
 
         /* Kontakt */
-        .contact-container {
+        .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 40px;
-            background: #1a1a1a;
-            padding: 40px;
-            border-radius: 8px;
+            margin-top: 30px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.3);
+            padding-top: 30px;
         }
 
-        .contact-info h3 {
-            color: #ff6b00;
-            margin-bottom: 15px;
-            font-size: 20px;
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #ffffff;
         }
 
-        .contact-info p {
-            color: #cccccc;
-            margin-bottom: 10px;
-            font-size: 16px;
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 1.8;
         }
 
-        /* Pätička */
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #0a0a0a;
-            color: #666666;
-            font-size: 14px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        .company-details p {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .company-details svg {
+            width: 22px;
+            height: 22px;
+            fill: none;
+            stroke: #ffffff;
+            stroke-width: 1.8;
         }
 
         /* Mobilné prispôsobenie */
@@ -188,89 +218,100 @@ HTML
             header {
                 padding: 15px 20px;
                 flex-direction: column;
-                gap: 15px;
-            }
-
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
                 gap: 12px;
             }
 
-            nav a {
-                font-size: 13px;
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .hero h1 {
-                font-size: 22px;
-                letter-spacing: 1.5px;
+                font-size: 26px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
 
             section {
-                padding: 80px 20px;
+                padding: 60px 20px;
             }
         }
     </style>
 </head>
 <body>
 
+    <!-- Celostránkové pozadie -->
+    <div class="page-bg"></div>
+
     <!-- Horná lišta -->
     <header>
-        <div class="logo">K<span>expres</span></div>
+        <a href="#domov" class="logo">
+            <div class="logo-bars">
+                <div class="logo-bar"></div>
+                <div class="logo-bar"></div>
+                <div class="logo-bar"></div>
+            </div>
+            <div class="logo-text">Kexpres</div>
+        </a>
         <nav>
-            <a href="#domov">Domov</a>
+            <a href="#domov">Domovská stránka</a>
             <a href="#sluzby">Služby</a>
             <a href="#kontakt">Kontakt</a>
-            <a href="prepravny-poriadok.pdf" target="_blank" class="btn-pdf">Prepravný poriadok</a>
+            <a href="prepravny-poriadok.pdf" target="_blank">Prepravný poriadok</a>
         </nav>
     </header>
 
-    <!-- Domov / Obrázok s čistým textom -->
+    <!-- Domovská stránka -->
     <section id="domov" class="hero">
         <h1>transport • logistic • spedition</h1>
     </section>
 
-    <!-- Služby (Zobrazí sa po posunutí nadol) -->
+    <!-- Služby -->
     <section id="sluzby">
         <h2 class="section-title">Naše služby</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Nákladná doprava</h3>
-                <p>Zabezpečujeme vnútroštátnu a medzinárodnú cestnú nákladnú dopravu s dôrazom na presnosť a bezpečnosť.</p>
-            </div>
-            <div class="service-card">
-                <h3>Logistika a Špedícia</h3>
-                <p>Kompletná organizácia prepravy, plánovanie trás a efektívne logistické riešenia na mieru.</p>
-            </div>
-            <div class="service-card">
-                <h3>Špeciálna preprava</h3>
-                <p>Individuálny prístup ku špecifickým požiadavkám prepravy s profesionálnym zabezpečením.</p>
-            </div>
+        <div class="services-content">
+            <h3>Profesionálna vnútroštátna aj medzinárodná nákladná doprava na mieru</h3>
+            <p>Poskytujeme komplexné dopravné služby zamerané na spoľahlivú a bezpečnú prepravu tovaru rôzneho druhu. Disponujeme moderným vozovým parkom, ktorý zahŕňa <strong>plachtové návesy, platá, menšie sólo či dodávky</strong>, vďaka čomu vieme flexibilne reagovať na požiadavky každého zákazníka.</p>
+            <p>Zabezpečujeme prepravu paletového aj kusového tovaru, ako aj nadrozmerných nákladov, s celkovou hmotnosťou až <strong>do 25 ton</strong>. Každá zásielka je pre nás individuálnou úlohou – od plánovania trasy až po bezpečné doručenie na miesto určenia.</p>
+            <p>Kladieme dôraz na presnosť, dodržiavanie dohodnutých termínov a profesionálny prístup. Naším cieľom je, aby ste sa na dopravu mohli spoľahnúť bez starostí a zbytočných komplikácií.</p>
+
+            <h3>Bezpečná preprava koní</h3>
+            <p>Súčasťou našich služieb je aj vnútroštátna a medzinárodná preprava koní. Pri preprave kladieme maximálny dôraz na bezpečnosť, pohodlie a ochranu koní počas celej cesty.</p>
+            <p>Preprava je zabezpečovaná v súlade s platnými požiadavkami a príslušnými oprávneniami, aby bola zaistená bezpečnosť a dobré podmienky prepravovaných koní.</p>
         </div>
     </section>
 
-    <!-- Kontakt (Zobrazí sa po posunutí nadol) -->
+    <!-- Kontakt -->
     <section id="kontakt">
         <h2 class="section-title">Kontakt</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Kexpres s. r. o.</h3>
-                <p><strong>Adresa:</strong> Banská Bystrica a okolie, Slovensko</p>
-                <p><strong>E-mail:</strong> info@k-expres.sk</p>
-                <p><strong>Telefón:</strong> +421 900 000 000</p>
+        <div class="contact-grid">
+            <div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    <span>+421 918 495 665</span>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    <span>kuciakmichal@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <span>Jozefa Krónera 3952/23, Martin 036 01</span>
+                </div>
             </div>
-            <div class="contact-info">
-                <h3>Otváracie hodiny</h3>
-                <p>Pondelok – Piatok: 08:00 – 17:00</p>
-                <p>Sobota – Nedeľa: Na základe dohody</p>
+            <div class="company-details">
+                <p>
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    IČO: 47217456
+                </p>
+                <p>DIČ: 2023805718</p>
+                <p>IČ DPH: SK2023805718</p>
             </div>
         </div>
     </section>
-
-    <!-- Pätička -->
-    <footer>
-        <p>&copy; Kexpres. Všetky práva vyhradené.</p>
-    </footer>
 
 </body>
 </html>
