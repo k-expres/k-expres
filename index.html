@@ -135,6 +135,7 @@ HTML
             display: block;
         }
 
+        /* Plná deliaca čiara pod nadpisom */
         .section-title {
             font-size: 42px;
             font-weight: normal;
@@ -161,14 +162,12 @@ HTML
             text-align: justify;
         }
 
-        /* Kontakt */
+        /* Kontakt - Bez prerušovanej čiary */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             margin-top: 30px;
-            border-top: 1px dashed rgba(255, 255, 255, 0.3);
-            padding-top: 30px;
         }
 
         .contact-item {
@@ -256,12 +255,12 @@ HTML
         </nav>
     </header>
 
-    <!-- Úvodná úvodná obrazovka (zobrazí sa pri načítaní) -->
+    <!-- Úvodná obrazovka -->
     <div id="domov" class="hero">
         <h1>transport • logistic • spedition</h1>
     </div>
 
-    <!-- Služby (skryté, kým sa neklikne) -->
+    <!-- Služby -->
     <section id="sluzby" class="tab-content">
         <h2 class="section-title">Naše služby</h2>
         <div class="services-content">
@@ -276,7 +275,7 @@ HTML
         </div>
     </section>
 
-    <!-- Kontakt (skrytý, kým sa neklikne) -->
+    <!-- Kontakt -->
     <section id="kontakt" class="tab-content">
         <h2 class="section-title">Kontakt</h2>
         <div class="contact-grid">
@@ -310,7 +309,6 @@ HTML
             const hero = document.getElementById('domov');
             const tabs = document.querySelectorAll('.tab-content');
             
-            // Skryjeme všetky záložky
             tabs.forEach(tab => tab.classList.remove('active'));
 
             if (tabId === 'domov') {
