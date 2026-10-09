@@ -5,7 +5,7 @@ HTML
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kexpres - transport • logistic • spedition</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png?v=2">
     <style>
         * {
             margin: 0;
@@ -53,7 +53,7 @@ HTML
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Priame vloženie obrázka loga */
+        /* Priame vloženie obrázka loga - ZVÄČŠENÉ LOGO */
         .logo {
             display: flex;
             align-items: center;
@@ -152,20 +152,30 @@ HTML
         }
 
         .contact-item {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .contact-item a {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 20px;
-            font-size: 18px;
             color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
         }
 
-        .contact-item svg {
+        .contact-item a:hover {
+            color: #00bfff;
+        }
+
+        .contact-item svg, .company-details svg {
             width: 24px;
             height: 24px;
             fill: none;
-            stroke: #ffffff;
+            stroke: currentColor;
             stroke-width: 1.8;
+            flex-shrink: 0;
         }
 
         .company-details p {
@@ -177,15 +187,7 @@ HTML
             gap: 15px;
         }
 
-        .company-details svg {
-            width: 24px;
-            height: 24px;
-            fill: none;
-            stroke: #ffffff;
-            stroke-width: 1.8;
-        }
-
-        /* Galéria - 8 veľkých fotiek pod sebou */
+        /* Galéria - Veľké fotky pod sebou */
         .gallery-container {
             display: flex;
             flex-direction: column;
@@ -219,7 +221,7 @@ HTML
             }
 
             .logo img {
-                height: 30px;
+                height: 42px;
             }
 
             .hero h1 {
@@ -285,16 +287,28 @@ HTML
         <div class="contact-grid">
             <div>
                 <div class="contact-item">
-                    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                    <span>+421 918 495 665</span>
+                    <a href="tel:+421918495665">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        <span>+421 918 495 665</span>
+                    </a>
                 </div>
                 <div class="contact-item">
-                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                    <span>kuciakmichal@gmail.com</span>
+                    <a href="mailto:kuciakmichal@gmail.com">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>kuciakmichal@gmail.com</span>
+                    </a>
                 </div>
                 <div class="contact-item">
-                    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                    <span>Jozefa Krónera 3952/23, Martin 036 01</span>
+                    <a href="https://www.instagram.com/kexpres.sro/" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        <span>kexpres.sro</span>
+                    </a>
+                </div>
+                <div class="contact-item" style="margin-top: 10px;">
+                    <div style="display: flex; align-items: center; gap: 15px; color: #ffffff;">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        <span>Jozefa Krónera 3952/23, Martin 036 01</span>
+                    </div>
                 </div>
             </div>
             <div class="company-details">
@@ -314,7 +328,7 @@ HTML
         </div>
     </section>
 
-    <!-- Galéria (8 fotiek) -->
+    <!-- Galéria -->
     <section id="galeria" class="tab-content">
         <h2 class="section-title">Galéria</h2>
         <div class="gallery-container">
